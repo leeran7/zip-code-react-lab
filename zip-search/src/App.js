@@ -27,7 +27,6 @@ function ZipSearchField(props) {
   );
 }
 
-
 class App extends Component {
   state = {
     cities: [],
@@ -46,10 +45,10 @@ class App extends Component {
   updateCities = async () => {
     await fetch(`http://ctp-zip-api.herokuapp.com/zip/${this.state.zip}`)
       .then( res => res.json())
-      .then( data => this.setState({ cities: data }));
+      .then( data => this.setState({ cities: data }))
+      .catch( error => console.log(error));
   }
   render() {
-    console.log(this.state.cities);
     return (
       <div className="App">
         <div className="App-header">
